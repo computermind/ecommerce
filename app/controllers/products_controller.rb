@@ -15,10 +15,12 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   # GET /products/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /products
@@ -72,3 +74,7 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:name, :price, :quantity, :description, :brand, :rating, :category_id)
     end
 end
+    
+    def product_params
+      params.require(:product).permit(:name, :price, :quantity, :description, :brand, :rating, :category_id, :image)
+    end
