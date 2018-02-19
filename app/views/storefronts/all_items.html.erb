@@ -1,2 +1,45 @@
-<h1>Storefronts#all_items</h1>
-<p>Find me in app/views/storefronts/all_items.html.erb</p>
+<h1>Welcome to Weeglotech store</h1>
+<p>You will find your experience exciting</p>
+
+<div class="row">
+    <% @products.each do |product| %>
+    <div class="col-md-4">
+        <div class="well center-it">
+        <p>
+        <% if product.image_file_name != nil %>
+        <%= image_tag product.image.url(:thumb), class: "img-responsive" %>
+        <% end %>
+        </p>
+        <p><%= link_to product.name, product %></p>
+        <p><%= number_to_currency product.price %></p>
+        <p>
+            <a href="#"><span class="glyphicon glyphicon-plus">Quick Info</span></a>    
+        </p>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'storefronts/all_items'
+#  get 'storefronts/all_items'
 
 #  get 'storefronts/items_by_category'
 

@@ -37,17 +37,13 @@
   </div>
 
   <div class="form-group">
-    <%= f.select(:category_id, @categories.collect {|c| [c.name, c.id]}, {include_blank: "Please Select a Category"})%>
+    <strong>Upload Product Image</strong>
+    <%= form.file_field :image %>
   </div>
 
   <div class="form-group">
-    <strong>Upload Product Image</strong>
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="field">
     <%= form.label :category_id %>
-    <%= form.number_field :category_id, id: :product_category_id %>
+    <%= form.select(:category_id, @categories.collect {|c| [c.name, c.id]}, {include_blank: "Please Select a Category"})%>
   </div>
 
   <div class="actions">
