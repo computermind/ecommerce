@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'toastr-rails'
 gem 'paperclip'  # or gem 'carrierwave'
 gem 'cancancan'
 gem 'hirb'       # or 'pry-rails'; for rails c
