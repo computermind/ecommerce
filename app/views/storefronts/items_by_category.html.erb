@@ -1,2 +1,28 @@
-<h1>Storefronts#items_by_category</h1>
-<p>Find me in app/views/storefronts/items_by_category.html.erb</p>
+<h1>Items by Category</h1>
+
+<div class="row">
+    <% @products_by_cat.each do |product| %>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="well center-it" style="height:150px;">
+                <p>
+                <% if product.image_file_name != nil %>
+                <%= image_tag product.image.url(:thumb), class: "img-responsive" %>
+                <% end %>
+                </p>
+                <p><%= link_to product.name, product %></p>
+                <p><%= number_to_currency product.price %></p>
+                <div style="height:150px;">
+                    <p><%= product.description%></p>
+                </div>
+                <p>
+                    <a href="#"><span class="glyphicon glyphicon-plus">Quick Info</span></a>    
+                </p>
+                </div>
+                <p>Produced By: <%= product.brand%></p>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
