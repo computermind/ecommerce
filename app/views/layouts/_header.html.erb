@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color:#E5E4E2">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Weeglo', root_path, class: 'navbar-brand' %>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Home', root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to current_user.email, edit_user_registration_path, :class => 'navbar-link'%></li>           
+          <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-link'  %></li>
+        <% else %>
+          <li><%= link_to 'Sign Up', new_user_registration_path, :class => 'navbar-link'%></li>
+          <li><%= link_to 'Login', new_user_session_path, :class => 'navbar-link'%></li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1  style="color:#FFFFFF">Welcome to Weeglo Store Front</h1>
+          <hr class="small">
+          <h3><span class="subheading" style="color:#FFFFFF">You will find your experience exciting!</span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

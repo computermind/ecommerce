@@ -1,6 +1,6 @@
 class StorefrontsController < ApplicationController
   
-  skip_before_action :authenticate_user!, :only => [:index]
+  skip_before_action :authenticate_user!
   
   def all_items
     @products = Product.all

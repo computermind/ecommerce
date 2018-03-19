@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  
 #  get 'storefronts/all_items'
 
 #  get 'storefronts/items_by_category'
