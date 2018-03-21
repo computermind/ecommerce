@@ -8,24 +8,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"> 
     <!-- Add jQuery Script --><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    
+
     <div class="container-fluid">
       <%= render 'layouts/header' %>
     </div>
+    
     <div class="container">
 	  	<%= render 'layouts/alerts' %>
+	  	
+    	<% if controller.controller_name == "storefronts" %>
+    		<div class="jumbotron">
+    			<h2>Welcome to Weeglo store!</h2>
+    		</div>
+    	<% end %>
+    	
       <%= yield %>
     </div>
+
+<script>
+  $(document).ready(function(){
+        $('.dropdown-toggle').dropdown();
+    });
+</script>
 
   </body>
 </html>

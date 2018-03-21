@@ -16,3 +16,38 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+
+.index-product-pics {
+	height: 100px;
+}
+
+.storefront-well {
+	height: 300px;
+}
+
+.center-it {
+	text-align: center;
+}
+
+.cart-pic {
+	width: 200px;
+}
+
+.invisible {
+	display: none;
+}
+
+.intro-header .site-heading {
+  padding: 75px 0;
+}
+
+.form-group{
+    background-color:#FFFFFF;
+}
+
+body {
+  margin-top: 50px;
+  background-color:#fff;
+  color: black;
+}

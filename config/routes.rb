@@ -1,19 +1,22 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  
-#  get 'storefronts/all_items'
+  get 'categories/check_admin'
 
-#  get 'storefronts/items_by_category'
-
-#  get 'storefronts/items_by_brand'
-  
   root 'storefronts#all_items'
-
-  get 'categorical' => 'storefronts#items_by_category' 
-
-  get 'branding' => 'storefronts#items_by_brand'
   
+  post 'add_to_cart' => 'cart#add_to_cart'
+  get 'view_order' => 'cart#view_order'
+  get 'checkout' => 'cart#checkout'
+
+  resources :line_items
+  resources :orders
+  devise_for :users
+
+  get 'all' => 'storefronts#all_items'
+	get 'categorical' => 'storefronts#items_by_category'
+  get 'branding' => 'storefronts#items_by_brand'
+
   resources :products
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :categories
+  
 end

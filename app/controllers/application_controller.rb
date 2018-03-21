@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   
   before_action :authenticate_user!
   
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
   before_action :categories, :brands
   
   def categories
@@ -18,5 +20,10 @@ class ApplicationController < ActionController::Base
     #.sort will put them in alphabetical order
     #.uniq! will take out any duplicates
   end
+  
+protected
+def configure_permitted_parameters
+devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+end
   
 end
