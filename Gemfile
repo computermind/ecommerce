@@ -41,6 +41,8 @@ gem 'paperclip'  # or gem 'carrierwave'
 gem 'cancancan'
 gem 'hirb'       # or 'pry-rails'; for rails c
 gem 'better_errors', group: :development
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '~> 1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

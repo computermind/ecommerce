@@ -1,55 +1,41 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <% if @product.image_file_name != nil %>
-     <%= image_tag @product.image.url(:thumb), class: "img-responsive" %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%=number_to_currency @product.price %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @product.brand %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @product.rating %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.name %>
-</p>
-
-<p>
-  <%=form_tag('/add_to_cart') do %>
-  <div class="cant-see-me">
-    <%= hidden_field :product_id, @product.id %>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+      <%= image_tag @product.image.url, width: "500", alt: @product.name, class: "img-responsive" %>
+    </p>
   </div>
-  <%= number_field_tag :quantity, nil, placeholder: "How Many?" %>
-  <%= submit_tag "Buy It!", class: "btn btn-danger" %>
-  <% end %>
+  <div class="col-md-8">
+    <h3><%= @product.name %></h3>
+    <p>
+      made by: <strong><%= link_to @product.brand, branding_path(brand: @product.brand) %></strong>
+    </p>
+    <h4><%= number_to_currency @product.price %></h4>
+    <p><strong><%= @product.quantity %></strong> in stock</p>
+    <% if @product.quantity > 0 %>
+      <p id="notice"><%= notice %></p>
+      <div>
+        <%= form_tag add_to_cart_path do %>
+          <%= hidden_field_tag :product_id, @product.id %>
+          <%= number_field_tag :quantity, nil, placeholder: "How Many?", min: 1 %>
+          <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <p>Found in our  <%= link_to @product.category.name, categorical_path(cat_id: @product.category.id) %> Store</p>
+    <p>
+      <%= @product.description.html_safe %>
+    </p>
+  </div>
+</div>
+<p>
+  <%= link_to "Back", :back %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if current_user.role == "admin" %>
+  <p>
+    <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-warning" %>
+  </p>
+<% end %>

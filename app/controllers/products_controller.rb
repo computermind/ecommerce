@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, except: [:show]
 
   # GET /products
   # GET /products.json
@@ -68,6 +69,14 @@ class ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])
     end
+
+  # check to see if user is an admin
+  def check_admin
+    unless current_user.role == "admin"
+      flash[:alert] = "You don't have that level of clearance!"
+      redirect_to root_path
+    end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params

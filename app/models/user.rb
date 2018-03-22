@@ -6,4 +6,8 @@ class User < ApplicationRecord
          
   has_many :orders
   
+  before_create do
+    self.role = "customer"
+  end
+  
 end

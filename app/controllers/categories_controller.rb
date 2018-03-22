@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   
   before_action :check_admin
   
-    def index
+  def index
     @products = Product.all
   end
   
