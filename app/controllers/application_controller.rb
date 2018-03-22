@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     #.uniq! will take out any duplicates
   end
   
+#  def after_sign_in_path_for(resource)
+#    app_dashboard_index_path
+#  end
+  
   protected
   
   def configure_permitted_parameters

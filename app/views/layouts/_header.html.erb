@@ -36,6 +36,7 @@
                   <i class="fa fa-sign-out"></i> Sign Out
             <% if current_user.role == "admin" %>
             <li><%= link_to 'Products Dashboard', products_path(@product) %> </li>
+            <li><%= link_to 'Control Panel', rails_admin_path %></li>
             <% end %>
           <% end %>
             </li>
